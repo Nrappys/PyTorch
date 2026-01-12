@@ -16,3 +16,5 @@ pyvenv.cfg
 # OS
 .DS_Store
 Thumbs.db
+
+/torch
