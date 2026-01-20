@@ -4,7 +4,7 @@ __pycache__/
 
 # Virtual environment
 venv/
-torch_env/
+torch/
 .env/
 
 # PyTorch / Python packages
@@ -17,5 +17,4 @@ pyvenv.cfg
 .DS_Store
 Thumbs.db
 
-/torch
-        
+Data/
