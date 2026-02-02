@@ -17,4 +17,4 @@ pyvenv.cfg
 .DS_Store
 Thumbs.db
 
-Data/
+chest_xray/
