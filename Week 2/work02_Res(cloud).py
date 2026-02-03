@@ -22,9 +22,11 @@ print("Using device:", device)
 # Transforms Data
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
-    transforms.Grayscale(num_output_channels=1),
     transforms.ToTensor(),
-    transforms.Normalize(mean=[0.5], std=[0.5])
+    transforms.Normalize(
+        mean=[0.5, 0.5, 0.5],
+        std=[0.5, 0.5, 0.5]
+    )
 ])
 
 train_dataset = datasets.ImageFolder(
@@ -54,7 +56,7 @@ class ResNet50MNIST(nn.Module):
     def __init__(self):
         super(ResNet50MNIST, self).__init__()
         self.model = resnet50(pretrained=True)
-        self.model.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.model.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
         self.model.fc = nn.Linear(2048,10)
 
     def forward(self, x):

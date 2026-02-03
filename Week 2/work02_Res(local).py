@@ -1,7 +1,7 @@
 import pandas as pd
 import torch
 import torch.nn as nn
-import torch.optim as optim
+
 import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader, TensorDataset
@@ -22,8 +22,7 @@ print("Using device:", device)
 # Transforms Data
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
-    transforms.Grayscale(num_output_channels=1),
-    transforms.ToTensor()
+    transforms.ToTensor()  
 ])
 
 train_dataset = datasets.ImageFolder(
@@ -67,7 +66,7 @@ class ResNet50MNIST(nn.Module):
     def __init__(self):
         super(ResNet50MNIST, self).__init__()
         self.model = resnet50(pretrained=True)
-        self.model.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.model.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
         self.model.fc = nn.Linear(2048,10)
 
     def forward(self, x):
