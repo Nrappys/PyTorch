@@ -17,5 +17,5 @@ pyvenv.cfg
 .DS_Store
 Thumbs.db
 
-Data/
-Repair/
+chest_xray/
+data/
